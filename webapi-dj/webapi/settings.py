@@ -131,7 +131,8 @@ LOGGING = {
     'disable_existing_loggers': False,
     'formatters': {
         'trace_formatter': {
-            'format': '%(asctime)s [%(levelname)s] %(message)s',
+            'format': '[%(asctime)s] %(levelname)s [%(name)s:%(lineno)s] [%(funcName)s] %(message)s',  # optional, default is logging.BASIC_FORMAT
+            'datefmt': '%Y-%m-%d %H:%M:%S',  # optional, default is '%Y-%m-%d %H:%M:%S'
         },
     },
     'handlers': {
