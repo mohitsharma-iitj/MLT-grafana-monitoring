@@ -1,0 +1,11 @@
+version: "1.1"
+   
+services:
+  ### DJANGO BACKEND-in DJango ###
+  webapi:
+    build: ./webapi-dj
+    command: python manage.py runserver 0.0.0.0:8001
+    volumes:
+      - ./webapi-dj:/webapi
+    ports:
+      - "8001:8001"
