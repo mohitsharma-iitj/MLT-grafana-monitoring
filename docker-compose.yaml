@@ -19,3 +19,11 @@ services:
       volumes:
           - ./prometheus:/etc/prometheus
       command: --config.file=/etc/prometheus/prometheus.yaml
+  grafana:
+    image: grafana/grafana:8.5.2
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./grafana/dashboard.yaml:/etc/grafana/provisioning/datasources/dashboard.yaml
+    depends_on:
+      - prometheus
