@@ -1,6 +1,18 @@
 apiVersion: 1
 
 datasources:
+
+  - name: Loki    # Grafana Loki, before my-jaeger datasource ,for tracing enabling with logs
+    type: loki    # Comment out after adding my-jaeger datasource
+    access: proxy
+    uid: my-loki
+    orgId: 1
+    url: http://loki:3100
+    isDefault: true
+    version: 1
+    editable: true
+
+  # Uncomment the following lines to enable Loki as a datasource
   # - name: loki
   #   type: loki
   #   uid: my-loki
