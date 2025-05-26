@@ -7,11 +7,11 @@ import logging
 
 logger = logging.getLogger(__name__)
 
-# uncomment below line to check log saving in webapp.log file
-# logger.error("Log1 on Webapp m1!") #; this always runs whenever any api from this file is called, so better to comment it out or remove it
+# uncomment below line to check log saving in webapi.log file
+# logger.error("Log1 on Webapi m1!") #; this always runs whenever any api from this file is called, so better to comment it out or remove it
 @csrf_exempt
 def index(request):
-    logger.error("Log1 on Webapp GET /!")   #hut
+    logger.error("Log1 on Webapi GET /!")   #hut
     # create log for success, 
     return render(request, 'api/index.json')
 

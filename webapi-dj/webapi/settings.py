@@ -139,7 +139,7 @@ LOGGING = {
             'level': 'WARNING',
             'class': 'logging.FileHandler',
             'formatter': 'trace_formatter',
-            'filename': 'webapp.log',
+            'filename': 'webapi.log',
         },
         'console': {
             'class': 'logging.StreamHandler',
