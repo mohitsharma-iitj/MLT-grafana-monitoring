@@ -1,9 +1,9 @@
 # MLT monitoring with grafana and Django-python
 
 This project is a demonstration of how observability can be implemented in microservices/distributed systems that are built with python/django. For monitoring, the MLT observability triad is collected:
-* Metrics (Prometheus + Grafana)
-* Logs (Promtail -> Loki + Grafana)
-* Traces (Opentelemetry->Jaeger + Grafana)
+* Metrics (Prometheus -> Grafana)
+* Logs (Promtail, Loki -> Grafana)
+* Traces (Opentelemetry, Jaeger -> Grafana)
 
 To see the complete blog, go to []().
 
