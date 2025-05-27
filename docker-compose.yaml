@@ -5,6 +5,9 @@ services:
     webapi:
         build: ./webapi-dj              # Builds the image using the Dockerfile inside ./webapi-dj
         command: python manage.py runserver 0.0.0.0:8001    # Overrides default CMD; starts Django dev server accessible on all interfaces at port 8001
+        environment:
+          - TRACING_HOST=jaeger
+          - TRACING_PORT=6831
         volumes:
           - ./webapi-dj:/webapi         # Mounts local ./webapi-dj folder into the container at /webapi to reflect live code changes
         ports:  
@@ -35,3 +38,9 @@ services:
           - "3100:3100"
         depends_on:
           - promtail
+
+    jaeger:
+        image: jaegertracing/all-in-one:1.32
+        ports:
+          - 16686:16686
+          - 6831:6831
