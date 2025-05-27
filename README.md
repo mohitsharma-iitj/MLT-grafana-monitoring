@@ -29,8 +29,7 @@ $ cd MLT-grafana-monitoring
 
 $ docker-compose up
 ```
-
-Make some requests through postman to webapi (basic calculator apis) [localhost:8000/service](http://localhost:8000/service) to generate MLT data. Then, go to [localhost:3000](http://localhost:3000]) to view the grafana dashboard. Login using username:admin and password:admin.
+Make some requests through postman to Django backend - webapi GET: [localhost:8001/api](http://localhost:8001/api) or POST: [localhost:8001/api/add](http://localhost:8001/api/add), to generate MLT data. Then, go to [localhost:3000](http://localhost:3000]) to view the grafana dashboard. Login using username:admin and password:admin.
 
 ![grafana](images/grafana.png)
 
