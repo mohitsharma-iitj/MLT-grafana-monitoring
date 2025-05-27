@@ -14,22 +14,23 @@ from opentelemetry.sdk.resources import SERVICE_NAME, Resource
 
 def main():
 
+    """Run administrative tasks."""
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'webapi.settings')
+
     DjangoInstrumentor().instrument()
     LoggingInstrumentor().instrument()
     RequestsInstrumentor().instrument()
 
     jaeger_exporter = JaegerExporter(
-        agent_host_name=os.getenv("TRACING_HOST"),
-        agent_port= int(os.getenv("TRACING_PORT")),
+        # agent_host_name="127.0.0.1",   # or "jaeger" if using Docker
+        agent_host_name="jaeger",
+        agent_port=6831,
     )
     trace.set_tracer_provider(TracerProvider(
-        resource=Resource.create({SERVICE_NAME: 'webapp'})
+        resource=Resource.create({SERVICE_NAME: 'webapi'})
     ))
     span_processor = BatchSpanProcessor(jaeger_exporter)
     trace.get_tracer_provider().add_span_processor(span_processor)
-
-    """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'webapi.settings')
 
     try:
         from django.core.management import execute_from_command_line

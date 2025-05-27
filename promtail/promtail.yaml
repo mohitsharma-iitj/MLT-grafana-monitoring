@@ -16,5 +16,5 @@ scrape_configs:
     labels:
       __path__: "/var/log/webapi.log"
       app: webapi
-      job: webapi   #IMP  #extra label to identify the job, requires before adding "my-jaeger" datasource in Grafana/dashboard.yaml
+      # job: webapi   #IMP  #extra label to identify the job, requires before adding "my-jaeger" datasource in Grafana/dashboard.yaml
                     # query to see logs in Grafana: {job="webapi"} |= "ERROR" |= "GET /"  OR {job="webapi"} |~ ".*"

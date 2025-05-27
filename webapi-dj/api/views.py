@@ -13,7 +13,7 @@ logger = logging.getLogger(__name__)
 # logger.error("Log1 on Webapi m1!") #; this always runs whenever any api from this file is called, so better to comment it out or remove it
 @csrf_exempt
 def index(request):
-    logger.info("✅ Successful execution of GET / on Webapi")
+    logger.error("✅ Successful execution of GET / on Webapi")  # not a error, just defining it
     # create log for success, 
     return render(request, 'api/index.json')
 
@@ -26,7 +26,7 @@ def add(request):
             b = int(data.get('y', 0))
             result = a + b
             time.sleep(0.5)
-            logger.info("✅ Successful execution of POST/add on Webapi")
+            logger.error("✅ Successful execution of POST/add on Webapi")
             return JsonResponse({'result': result})
         except Exception as e:
             return JsonResponse({'error': str(e)}, status=400)
@@ -43,7 +43,7 @@ def multiply(request):
                 y = int(data.get('y', 1))
                 result = x * y
                 time.sleep(0.5)
-                logger.info("✅ Successful execution of POST/multiply on Webapi")
+                logger.error("✅ Successful execution of POST/multiply on Webapi")
                 return JsonResponse({'result': result})
             except Exception as e:
                 return JsonResponse({'error': str(e)}, status=400)
@@ -63,5 +63,5 @@ def echo(request):
 
 @csrf_exempt
 def health_check(request):
-    logger.info("✅ Health check endpoint called")
+    logger.error("✅ Health check endpoint called")
     return JsonResponse({'status': 'healthy', 'uptime': 'OK', 'code': 200})
