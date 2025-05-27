@@ -1,13 +1,13 @@
-# opentelemetry-python-grafana-mlt
+# MLT monitoring with grafana and Django-python
 
 This project is a demonstration of how observability can be implemented in microservices/distributed systems that are built with python/django. For monitoring, the MLT observability triad is collected:
-* Metrics
-* Logs
-* Traces
+* Metrics (Prometheus + Grafana)
+* Logs (Promtail -> Loki + Grafana)
+* Traces (Opentelemetry->Jaeger + Grafana)
 
 To see the complete blog, go to []().
 
-Open source technologies listed below are used to collect MLT data:
+Breakdown of each component that are used to collect MLT data:
 
 1. **Grafana** _[Dashboard]_: This is a dashboard where we will observe the MLT data collected by the rest of the services.
 2. **Prometheus** _[Monitoring]_: Collects and stores metrics from applications.
@@ -20,7 +20,7 @@ The following figure summarizes the technology dependencies.
 
 ![MLT in kubernetes](./images/MLT.png)
 
-To run the project, follow the steps below.
+To setup the monitoring in a day, follow the steps below.
 
 ```bash
 $ git clone https://github.com/mohitsharma-iitj/MLT-grafana-monitoring.git
@@ -31,20 +31,19 @@ $ docker-compose up
 ```
 
 Make some requests through postman to Django backend - webapi GET: [localhost:8001/api](http://localhost:8001/api) or POST: [localhost:8001/api/add](http://localhost:8001/api/add), to generate MLT data. Then, go to [localhost:3000](http://localhost:3000]) to view the grafana dashboard. Login using username:admin and password:admin.
-![grafana](images/grafana.png)
 
 Go to **explore** and you should be able to see MLT data collected from the apps. Check demo below.
 
-#### Grafana dashboard
+### 1. Grafana dashboard
 ![grafana explore](images/explore.png)
 
-#### Logs from Loki
-![loki logs](images/loki.png)
-
-#### Metrics from Prometheus
+### 2. Metrics from Prometheus
 ![prometheus](images/prometheus.png)
 
-#### Traces from Jaeger
+### 3. Logs from Loki
+![loki logs](images/loki.png)
+
+### 4. Traces from Jaeger
 ![Jaeger traces](images/jaeger.png)
 ![Jaeger traces split screen](images/jaeger2.png)
 
